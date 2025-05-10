@@ -14,12 +14,13 @@
                            class="form-control"
                            placeholder="Nombre del producto"
                            formControlName="name"
-                           >
-
-                    <span class="form-text text-danger">
-                        <!-- Debe de ser de 3 letras -->
-                        error message
-                    </span>
+                           />
+                    @if( isValidField('name') ){
+                        <span class="form-text text-danger">
+                            {{ getFieldError('name') }}
+                        </span>
+                    }
+                    
                 </div>
             </div>
 
@@ -86,10 +87,17 @@
         <span>Value</span>
         <pre>{{  myForm.value | json }}</pre>
 
+
+        <span>Errores</span>
+        <pre>{{  myForm.controls["name"].errors | json }}</pre>
+        <pre>{{  myForm.controls["price"].errors | json }}</pre>
+        <pre>{{  myForm.controls["name"].errors | json }}</pre>
+
+
         <span>Precio</span>
-        <pre>{{  myForm.controls.price.value | json }}</pre>
+        <pre>{{  myForm.controls["price"].value | json }}</pre>
 
         <span>Producto</span>
-        <pre>{{  myForm.controls.name.value | json }}</pre>
+        <pre>{{  myForm.controls["name"].value | json }}</pre>
     </div>
 </div>
