@@ -25,7 +25,10 @@ export class BasicPageComponent {
 
   /*Para validar un campo usamos validators */
   isValidField(fieldName: string): boolean | null {
-    return !!this.myForm.controls[fieldName].errors;
+    return (
+      this.myForm.controls[fieldName].errors &&
+      this.myForm.controls[fieldName].touched
+    );
   }
 
   getFieldError(fieldName: string): string | null {
@@ -47,5 +50,15 @@ export class BasicPageComponent {
     }
     //5.- si no se encuentra un error conocido, retornamos null
     return null;
+  }
+  //este metodo serveria para verificar que el formulario sea valido antes de guardar o enviar
+  onSave() {
+    if (this.myForm.invalid) {
+      //la propiedad markAllAsTouched() marca todos los campos como tocados, lo que hace que se muestren los errores de validacion
+      this.myForm.markAllAsTouched();
+      return;
+    }
+    //para resetear el formulario, se puede usar el metodo reset() del formulario
+    this.myForm.reset();
   }
 }
