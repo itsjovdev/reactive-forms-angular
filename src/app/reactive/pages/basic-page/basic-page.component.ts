@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { FormUtils } from '../../../utils/form-utils';
 
 @Component({
   selector: 'app-basic-page',
@@ -15,6 +16,7 @@ import {
 })
 export class BasicPageComponent {
   private fb = inject(FormBuilder);
+  formUtils = FormUtils;
 
   myForm: FormGroup = this.fb.group({
     //Estos campos seran requeridos, esta campo(name) tiene que tener minimo 3 caracteres
@@ -23,14 +25,14 @@ export class BasicPageComponent {
     inStorage: [0, [Validators.required, Validators.min(0)]],
   });
 
-  /*Para validar un campo usamos validators */
+  /*Para validar un campo usamos validators 
   isValidField(fieldName: string): boolean | null {
     return (
       this.myForm.controls[fieldName].errors &&
       this.myForm.controls[fieldName].touched
     );
   }
-
+  
   getFieldError(fieldName: string): string | null {
     //1.- verificamos si el campo existe enn el formulario, si no existe retornamos null
     if (!this.myForm.controls[fieldName]) return null;
@@ -50,7 +52,7 @@ export class BasicPageComponent {
     }
     //5.- si no se encuentra un error conocido, retornamos null
     return null;
-  }
+  }  */
   //este metodo serveria para verificar que el formulario sea valido antes de guardar o enviar
   onSave() {
     if (this.myForm.invalid) {
