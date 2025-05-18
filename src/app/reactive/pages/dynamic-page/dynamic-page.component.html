@@ -8,9 +8,11 @@
         <div class="col-sm-9">
             <input class="form-control"
                    placeholder="Nombre de la persona" formControlName="name">
-            <span class="form-text text-danger">
-                   error message
-            </span>
+                @if( formUtils.isValidField(myForm, 'name')){
+                    <span class="form-text text-danger">
+                        {{ formUtils.getFieldError(myForm,'name')}}
+                    </span>
+                }
         </div>
     </div>
 
@@ -47,9 +49,11 @@
                       Eliminar
                     </button>
                 </div>
-                <span class="form-formutils text-danger">
-                   Este campo es requerido
-                </span>
+                @if(formUtils.isValidFieldInArray(favoriteGames, i)){
+                    <span class="form-formutils text-danger">
+                        {{formUtils.getFieldErrorInArray(favoriteGames, i)}}
+                    </span>
+                }
             </div>
           }
         </div>
@@ -60,9 +64,8 @@
     <div class="row">
         <div class="col-sm-12">
             <button type="submit"
-                    class="btn btn-primary float-end"
-                    >
-                    <!-- [disabled]="myForm.invalid" -->
+                    class="btn btn-primary float-end">
+                    <!-- [disabled]="myForm.invalid"-->
                 Guardar
             </button>
         </div>
