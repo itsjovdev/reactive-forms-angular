@@ -2,7 +2,7 @@
 
 Este proyecto implementa formularios utilizando la técnica de **Reactive Forms** de Angular, enfocándose en cómo manejar la lógica de validaciones y control de campos directamente desde TypeScript.
 
-##  ¿Por qué usar Formularios Re
+##  ¿Por qué usar Formularios Reactivos?
 
 - Permiten un control total sobre la lógica de validaciones sin depender de la plantilla HTML.
 - Son ideales para formularios complejos, dinámicos o con múltiples validaciones personalizadas.
